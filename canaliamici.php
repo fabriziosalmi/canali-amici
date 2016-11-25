@@ -22,7 +22,7 @@ function canaliamici_settings_link($links) {
 $plugin = plugin_basename(__FILE__); 
 add_filter("plugin_action_links_$plugin", 'canaliamici_settings_link' );
 /** Step 3. */
-function my_plugin_options() {
+function canaliamici_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
@@ -30,14 +30,13 @@ function my_plugin_options() {
 	echo '<h2>Canali amici</h2>';
 	echo '<p>Il plugin in questo momento funziona correttamente. In ogni pagina verrà visualizzato un link ad uno dei canali amici di KissTube.</p>';
 }
-function theme_slug_filter_the_content( $content ) {
-$canale = wp_remote_get('https://code.kisstube.tv/api/canaliamici.php');
-$canale = $canale['body'];
-	$canali_title = '<strong>Iscriviti ai canali amici</strong><br>';
-	$canali_item = $canale;
-    	$canali_content = '<div style="color: #656c7a;font-family: Helvetica Neue,arial,sans-serif;font-size: 15px;font-weight:500;"><br>'.$canali_title.$canali_item.'<br></div>';
-    	$canali_content = $canale .= $canali_content;
-    	return $canali_content;
+function canaliamici_filter_the_content( $content ) {
+		$canale = wp_remote_get('https://code.kisstube.tv/api/canaliamici.php');
+		$canale = $canale['body'];
+		$canali_title = '<strong>Iscriviti ai canali amici</strong><br>';
+    	$canali_content = '<div style="color: #656c7a;font-family: Helvetica Neue,arial,sans-serif;font-size: 15px;font-weight:500;">'.$canali_title.'<br>'.$canale.'<br></div>';
+
+    	return $content.'<br />'.$canali_content;
 }
-add_filter( 'the_content', 'theme_slug_filter_the_content' );
+add_filter( 'the_content', 'canaliamici_filter_the_content' );
 ?>
