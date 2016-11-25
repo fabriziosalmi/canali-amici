@@ -11,10 +11,10 @@ License: GPL
 */
 add_action( 'admin_menu', 'my_plugin_menu' );
 function my_plugin_menu() {
-	add_options_page( 'Canali amici', 'Canali amici', 'manage_options', 'proverbi-wp-plugin', 'my_plugin_options' );
+	add_options_page( 'Canali', 'Canali', 'manage_options', 'proverbi-wp-plugin', 'my_plugin_options' );
 }
 function your_plugin_settings_link($links) { 
-  $settings_link = '<a href="options-general.php?page=proverbi-wp-plugin.php">Settings</a>'; 
+  $settings_link = '<a href="options-general.php?page=canali-amici-wp-plugin.php">Settings</a>'; 
   array_unshift($links, $settings_link); 
   return $links; 
 }
