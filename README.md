@@ -1,2 +1,2 @@
 # canali-amici
-Visualizza un canale su YouTube tra centinaia di canali amici di KissTube sul tuo sito.
+Visualizza una lista tra centinaia di canali amici di KissTube a cui iscriversi.
